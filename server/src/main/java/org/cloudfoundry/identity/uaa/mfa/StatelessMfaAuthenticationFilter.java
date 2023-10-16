@@ -99,7 +99,7 @@ public class StatelessMfaAuthenticationFilter extends OncePerRequestFilter imple
         } catch (InvalidMfaCodeException e) {
             UaaUser user = getUaaUser();
             publishEvent(new MfaAuthenticationFailureEvent(user, getAuthentication(), provider != null ? provider.getType().toValue() : "null", IdentityZoneHolder.getCurrentZoneId()));
-            handleException(new JsonError(401, "unauthorized", "Bad credentials"), response);
+            handleException(new JsonError(401, "invalid_grant", "Bad credentials"), response);
         }
     }
 
