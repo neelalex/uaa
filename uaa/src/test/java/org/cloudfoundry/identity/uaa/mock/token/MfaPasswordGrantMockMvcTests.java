@@ -117,7 +117,7 @@ public class MfaPasswordGrantMockMvcTests extends AbstractTokenMockMvcTests {
         )
             .andDo(print())
             .andExpect(status().isUnauthorized())
-            .andExpect(jsonPath("error").value("unauthorized"))
+            .andExpect(jsonPath("error").value("invalid_grant"))
             .andExpect(jsonPath("error_description").value(containsString("Bad credentials")));
         validateAuthEvents(
                 Collections.singletonList(
